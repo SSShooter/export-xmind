@@ -21,7 +21,7 @@ jobs:
       - run: yarn
       - run: npm run build
       - run: ls dist
-      - run: npm publish
+      - run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
 
