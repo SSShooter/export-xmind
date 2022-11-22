@@ -10,6 +10,8 @@ npm i @mind-elixir/export-xmind jszip file-saver
 
 ## How To Use
 
+### Use As A Plugin
+
 ```javascript
 import MindElixir from 'mind-elixir'
 import exportXmind from '@mind-elixir/export-xmind'
@@ -20,5 +22,13 @@ mind.init(data)
 
 const blob = await mind.exportXmind() // get blob
 
-mind.exportXmindFile() // download file
+mind.exportXmindFile(fileName) // download file
+```
+
+### MindElixir Data To Xmind
+
+```javascript
+import { data2Xmind } from '@mind-elixir/export-xmind'
+// use this way to avoid creating instance
+const blob = await data2Xmind(data) // data returned by getAllData()
 ```

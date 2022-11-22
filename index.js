@@ -42,30 +42,35 @@ function convert(data) {
   }
 }
 
+export function data2Xmind(data, version) {
+  const zip = new JSZip()
+  const id = generateUUID()
+
+  if (version) {
+    metadata.creator.version = version
+  }
+  metadata.activeSheetId = id
+  const c0 = content[0]
+  c0.id = id
+  c0.title = data.nodeData.topic
+  convert(data.nodeData)
+  c0.rootTopic = data.nodeData
+  zip.file('manifest.json', JSON.stringify(manifest))
+  zip.file('metadata.json', JSON.stringify(metadata))
+  zip.file('content.json', JSON.stringify(content))
+
+  return zip.generateAsync({ type: 'blob' })
+}
+
 export default function (me) {
   me.exportXmind = function () {
-    const zip = new JSZip()
     const data = me.getAllData()
-    const id = generateUUID()
-
-    metadata.creator.version = me.version
-    metadata.activeSheetId = id
-    const c0 = content[0]
-    c0.id = id
-    c0.title = data.nodeData.topic
-    const clone = JSON.parse(JSON.stringify(data.nodeData))
-    convert(clone)
-    c0.rootTopic = clone
-    zip.file('manifest.json', JSON.stringify(manifest))
-    zip.file('metadata.json', JSON.stringify(metadata))
-    zip.file('content.json', JSON.stringify(content))
-
-    return zip.generateAsync({ type: 'blob' })
+    return data2Xmind(data, me.version)
   }
   me.exportXmindFile = async function (fileName) {
     const data = me.getAllData()
-    this.exportXmind().then(function (content) {
-      saveAs(content, (fileName || data.nodeData.topic) + '.xmind')
-    })
+    const file = await data2Xmind(data, me.version)
+    // `topic` had renamed to `title`
+    saveAs(file, (fileName || data.nodeData.title) + '.xmind')
   }
 }

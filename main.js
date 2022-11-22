@@ -2,7 +2,7 @@ import MindElixir, { E } from 'mind-elixir'
 import { exportSvg, exportPng } from 'mind-elixir/dist/painter'
 import example from 'mind-elixir/dist/example1'
 
-import exportXmind from './index'
+import exportXmind, { data2Xmind } from './index'
 // import exportXmind from '@mind-elixir/export-xmind'
 
 const app = document.querySelector('#app')
@@ -90,3 +90,4 @@ window.M = MindElixir
 window.E = MindElixir.E
 window.exportSvg = exportSvg
 window.exportPng = exportPng
+window.data2Xmind = data2Xmind
