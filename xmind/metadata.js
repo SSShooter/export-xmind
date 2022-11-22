@@ -1,7 +1,7 @@
 export default {
   creator: {
     name: 'Mind-Elixir',
-    version: '12.0.3.202206241736',
+    version: '1.0.0',
   },
-  activeSheetId: '17b972f40eea83577fe8ab16e5',
+  activeSheetId: '',
 }
