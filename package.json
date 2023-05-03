@@ -1,6 +1,6 @@
 {
   "name": "@mind-elixir/export-xmind",
-  "version": "1.1.0",
+  "version": "2.0.0",
   "type": "module",
   "files": [
     "dist"
@@ -21,10 +21,10 @@
   "devDependencies": {
     "file-saver": "^2.0.5",
     "jszip": "^3.10.0",
-    "mind-elixir": "^1.1.0",
     "vite": "^3.0.0"
   },
   "peerDependencies": {
+    "mind-elixir": "^2.0.0",
     "file-saver": "^2.0.5",
     "jszip": "^3.10.0"
   }

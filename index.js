@@ -64,11 +64,11 @@ export function data2Xmind(data, version) {
 
 export default function (me) {
   me.exportXmind = function () {
-    const data = me.getAllData()
+    const data = me.getData()
     return data2Xmind(data, me.version)
   }
   me.exportXmindFile = async function (fileName) {
-    const data = me.getAllData()
+    const data = me.getData()
     const file = await data2Xmind(data, me.version)
     // `topic` had renamed to `title`
     saveAs(file, (fileName || data.nodeData.title) + '.xmind')

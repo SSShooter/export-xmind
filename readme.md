@@ -30,5 +30,5 @@ mind.exportXmindFile(fileName) // download file
 ```javascript
 import { data2Xmind } from '@mind-elixir/export-xmind'
 // use this way to avoid creating instance
-const blob = await data2Xmind(JSON.parse(JSON.stringify(data))) // data returned by getAllData()
+const blob = await data2Xmind(JSON.parse(JSON.stringify(data))) // data returned by getData()
 ```
